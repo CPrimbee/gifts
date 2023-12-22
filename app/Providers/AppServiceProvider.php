@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         if (!$this->app->environment('testing')) {
-            auth()->loginUsingId(1);
+            // auth()->loginUsingId(1);
         }
     }
 }
