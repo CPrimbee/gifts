@@ -1,20 +1,17 @@
-<div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none sm:justify-end">
-    <x-button
-        label="Adicionar"
-        primary
-        wire:click="$toggle('modal')"
-    />
-    <x-modal.card title="Criação de Item" blur wire:model.defer="modal">
+<div>
+    <x-modal.card :title="__('Edição de Item: #:id', ['id'=>$item?->id])" blur wire:model.defer="modal">
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <x-input label="Nome" wire:model.defer="item.name"/>
 
-            <x-select label="Categoria"
-                    wire:model.defer="item.category_id"
-                    placeholder="Procure uma categoria"
-                    :async-data="route('api.category')"
-                    option-label="name"
-                    option-value="id"
-            />
+            @if ($item)
+                <x-select label="Categoria"
+                        wire:model.defer="item.category_id"
+                        placeholder="Procure uma categoria"
+                        :async-data="route('api.category')"
+                        option-label="name"
+                        option-value="id"
+                />
+            @endif
 
             <div class="col-span-full">
                 <x-textarea label="Descrição"
@@ -39,7 +36,7 @@
             <div class="flex justify-end gap-x-4">
                 <div class="flex">
                     <x-button flat label="Cancelar" x-on:click="close" />
-                    <x-button primary label="Criar" wire:click="create" />
+                    <x-button primary label="Salvar" wire:click="update" />
                 </div>
             </div>
         </x-slot>

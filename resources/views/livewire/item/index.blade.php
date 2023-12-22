@@ -35,7 +35,10 @@
                                         <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $item->quantity }}</td>
                                         <td class="px-3 py-4 text-sm text-gray-500 whitespace-nowrap">{{ $item->is_active }}</td>
                                         <td class="relative py-4 pl-3 pr-4 text-sm font-medium text-right whitespace-nowrap sm:pr-6">
-                                            <a href="#" class="text-indigo-600 hover:text-indigo-900">Editar</a>
+                                            <x-button.circle primary
+                                                    icon="pencil"
+                                                    wire:click="update({{$item->id}})"
+                                            />
                                         </td>
                                     </tr>
                                 @endforeach
@@ -46,5 +49,6 @@
             </div>
         </div>
         {{ $items->links() }}
+        <livewire:item.update />
     </div>
 </div>
