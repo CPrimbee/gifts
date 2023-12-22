@@ -20,10 +20,5 @@ class DatabaseSeeder extends Seeder
             'name'  => 'CG',
             'email' => 'cg@cg.com',
         ]);
-
-        Item::factory(10)
-            ->forCategory()
-            ->activated()
-            ->create();
     }
 }
