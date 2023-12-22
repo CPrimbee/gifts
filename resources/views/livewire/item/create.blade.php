@@ -8,7 +8,13 @@
         <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
             <x-input label="Nome" wire:model.defer="item.name"/>
 
-            <x-input label="Phone" placeholder="USA phone" />
+            <x-select label="Categoria"
+                    wire:model.defer="item.category_id"
+                    placeholder="Procure um categoria"
+                    :async-data="route('api.category')"
+                    option-label="name"
+                    option-value="id"
+            />
 
             <div class="col-span-full">
                 <x-textarea label="Descrição"
@@ -16,6 +22,10 @@
                             class="resize-none"
                             rows="8"
                 />
+            </div>
+
+            <div class="col-span-full">
+                <x-input label="Referência" wire:model.defer="item.reference"/>
             </div>
 
             <x-inputs.number label="Quantidade" wire:model.defer="item.quantity"/>
@@ -26,7 +36,7 @@
         </div>
 
         <x-slot name="footer">
-            <div class="flex justify-between gap-x-4">
+            <div class="flex justify-end gap-x-4">
                 <div class="flex">
                     <x-button flat label="Cancelar" x-on:click="close" />
                     <x-button primary label="Criar" wire:click="create" />
