@@ -4,16 +4,12 @@
     @endphp
     <div class="px-4 sm:px-6 lg:px-8">
         <div class="flex sm:items-end sm:justify-between">
-            <div class="w-0.5">
-                <x-native-select
-                    label="Quantity"
-                    :options="[10,25,50,100]"
-                    wire:model.live.debounce.250ms="quantity"
-                />
-            </div>
-            <div class="mt-4 sm:ml-16 sm:mt-0 sm:flex-none sm:justify-end">
-                <x-button primary label="Adicionar"/>
-            </div>
+            <x-native-select
+                label="Quantity"
+                :options="[10,25,50,100]"
+                wire:model.debounce.250ms="quantity"
+            />
+            <livewire:item.create />
         </div>
         <div class="flow-root mt-8">
             <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">

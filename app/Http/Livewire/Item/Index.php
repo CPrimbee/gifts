@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Livewire\Item;
+namespace App\Http\Livewire\Item;
 
-use App\Livewire\Traits\Table;
+use App\Http\Livewire\Traits\Table;
 use App\Models\Item;
 use Illuminate\Contracts\View\View;
 use Illuminate\Pagination\LengthAwarePaginator;

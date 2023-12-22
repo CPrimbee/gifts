@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Traits;
+namespace App\Http\Livewire\Traits;
 
 use Illuminate\Http\Request;
 use Illuminate\Pagination\Paginator;
@@ -25,7 +25,7 @@ trait Table
 
     public function setupPagination(Request $request): void
     {
-        $this->setPage($request->get('page', 1));
+        $this->page      = $request->get('page', $this->page);
         $this->search    = $request->get('search', '');
         $this->sort      = $request->get('sort', $this->sort);
         $this->direction = $request->get('direction', $this->direction);
@@ -61,7 +61,7 @@ trait Table
     public function initializeWithPagination(): void
     {
         Paginator::currentPageResolver(function (): int {
-            return $this->getPage();
+            return $this->page;
         });
 
         Paginator::defaultView($this->paginationView());
